@@ -19,6 +19,6 @@ int main() {
 	objects[6] = new Pan(7,10);
 
 	for (int i=0; i < n; i++) {
-		std::cout<<objects[i]->ToString();
+		objects[i]->print();
 	}
 }

@@ -10,6 +10,6 @@ public:
     Pan(int inventoryNumber, int volume);
     virtual ~Pan() {};
     int GetVolume();
-    std::string ToString() override;
+    void print() override;
 };
 

@@ -11,6 +11,7 @@ int Pan::GetVolume() {
 	return volume;
 }
 
-std::string Pan::ToString() {
-	return "ÊÎÑÒÐÞË‗:\nÈםגוםעאנםûי םמלונ:" + std::to_string(GetInventoryNumber()) + "\nÎבתול: " + std::to_string(GetVolume()) + " כ. \n";
+void Pan::print() {
+	KitchenObject::print();
+	std::cout << "Îבתול: " + std::to_string(GetVolume()) + " כ\n";
 }

@@ -8,8 +8,8 @@ private:
     int gasConsuption;
 public:
     GasStove(int inventoryNumber, std::string Color, int gasConsuption);
-    virtual ~GasStove() {};
+    ~GasStove() {};
     int GetGasConsuption();
-    std::string ToString() override;
+    void print() override;
 };
 

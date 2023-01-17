@@ -12,6 +12,7 @@ std::string Stove::GetColor() {
 	return Color;
 }
 
-std::string Stove::ToString() {
-	return "ПЛИТА:\nИнвентарный номер: " + std::to_string(GetInventoryNumber()) + "\n Цвет: " + GetColor()+"\n";
+void Stove::print() {
+	KitchenObject::print();
+	std::cout << "Цвет: " + GetColor() + "\n";
 }

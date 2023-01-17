@@ -8,6 +8,6 @@ public:
 	virtual ~KitchenObject() {};
 	virtual int GetInventoryNumber();
 	virtual void SetInventoryNumber(int inventoryNumber);
-	virtual std::string ToString();
+	virtual void print();
 };
 

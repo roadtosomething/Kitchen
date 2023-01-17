@@ -8,8 +8,8 @@ private:
     int power;
 public:
     ElectricStove(int inventoryNumber, std::string Color, int power);
-    virtual ~ElectricStove() {};
+    ~ElectricStove() {};
     int GetPower();
-    std::string ToString() override;
+    void print() override;
 };
 

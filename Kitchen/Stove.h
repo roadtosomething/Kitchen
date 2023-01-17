@@ -10,6 +10,6 @@ public:
     Stove(int inventoryNumber, std::string Color);
     virtual ~Stove() {};
     std::string GetColor();
-    std::string ToString() override;
+    void print() override;
 };
 

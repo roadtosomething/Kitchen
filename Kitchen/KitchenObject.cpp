@@ -1,9 +1,6 @@
 #include "KitchenObject.h"
 #include <string>
-std::string KitchenObject::ToString() {
-	std::string res = "Инвентарный номер:" + std::to_string(GetInventoryNumber());
-	return res;
-}
+#include <iostream>
 
 int KitchenObject::GetInventoryNumber() {
 	return inventoryNumber;
@@ -11,4 +8,8 @@ int KitchenObject::GetInventoryNumber() {
 
 void KitchenObject::SetInventoryNumber(int inventoryNum) {
 	inventoryNumber = inventoryNum;
+}
+
+void KitchenObject::print() {
+	std::cout << "Инвентарный номер:" + std::to_string(GetInventoryNumber()) + "\n";
 }

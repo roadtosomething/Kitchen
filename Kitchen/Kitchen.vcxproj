@@ -131,8 +131,10 @@
     <ClInclude Include="GasStove.h" />
     <ClInclude Include="KitchenObject.h" />
     <ClInclude Include="Multicooker.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Pan.h" />
     <ClInclude Include="Stove.h" />
+    <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ElectricStove.cpp" />
@@ -140,8 +142,10 @@
     <ClCompile Include="Kitchen.cpp" />
     <ClCompile Include="KitchenObject.cpp" />
     <ClCompile Include="Multicooker.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Pan.cpp" />
     <ClCompile Include="Stove.cpp" />
+    <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
