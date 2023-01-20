@@ -6,12 +6,25 @@ Multicooker::Multicooker(int inventoryNumberr, std::string Color, int volume, in
 	hasFastCooking = hasFastCook;
 }
 
+Multicooker::Multicooker() : ElectricStove(), Pan() {
+	std::cout << "Имеется ли функция скороварки? \n1.Да \n2.Нет \nОтвет: ";
+	int answer;
+	std::cin >> answer;
+	hasFastCooking = (answer == 1);
+}
+
 bool Multicooker::isHasFasCooking() {
 	return hasFastCooking;
 }
 
-void Multicooker::print() {
-	ElectricStove::print();
-	Pan::print();
-	std::cout << isHasFasCooking() ? "Имеет функцию скороварки\n" : "Не имеет функцию скороварки\n";
+void Multicooker::print(bool need) {
+	ElectricStove::print(true);
+	Pan::print(false);
+	if (isHasFasCooking()) {
+		std::cout << "Имеет функцию скороварки\n";
+	}
+	else {
+		std::cout<<"Не имеет функцию скороварки\n";
+	}
+	 
 }

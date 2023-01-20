@@ -8,8 +8,9 @@ private:
     int power;
 public:
     ElectricStove(int inventoryNumber, std::string Color, int power);
+    ElectricStove();
     ~ElectricStove() {};
     int GetPower();
-    void print() override;
+    void print(bool need) override;
 };
 

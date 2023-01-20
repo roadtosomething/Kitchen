@@ -7,8 +7,12 @@ class Tree
 public:
 	Tree();
 	~Tree();
-	void Add(KitchenObject *kitchenobject);
+	void Add(KitchenObject* kitchenobject);
+	void LCP();
+	void TreePrint();
 private:
-	void AddInner(Node *curnode, Node *kitchenO);
+	void AddInner(Node* curnode, Node *kitchenO);
+	void LCPInner(Node* curnode);
+	void TreePrintInner(Node* curnode, int level);
 };
 

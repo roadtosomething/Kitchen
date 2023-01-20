@@ -9,8 +9,9 @@ private:
     bool hasFastCooking;
 public:
     Multicooker(int inventoryNumberr, std::string Color, int volume, int power, bool hasFastCooking);
+    Multicooker();
     ~Multicooker() {};
     bool isHasFasCooking();
-    void print() override;
+    void print(bool need) override;
 };
 

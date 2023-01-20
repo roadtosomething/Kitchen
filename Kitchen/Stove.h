@@ -8,8 +8,9 @@ protected:
     std::string Color;
 public:
     Stove(int inventoryNumber, std::string Color);
+    Stove();
     virtual ~Stove() {};
     std::string GetColor();
-    void print() override;
+    void print(bool need) override;
 };
 

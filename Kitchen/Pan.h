@@ -8,8 +8,9 @@ private:
     int volume;
 public:
     Pan(int inventoryNumber, int volume);
+    Pan();
     virtual ~Pan() {};
     int GetVolume();
-    void print() override;
+    void print(bool need) override;
 };
 

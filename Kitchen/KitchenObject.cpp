@@ -10,6 +10,7 @@ void KitchenObject::SetInventoryNumber(int inventoryNum) {
 	inventoryNumber = inventoryNum;
 }
 
-void KitchenObject::print() {
-	std::cout << "Инвентарный номер:" + std::to_string(GetInventoryNumber()) + "\n";
+
+void KitchenObject::print(bool need) {
+	if (need) { std::cout << "Инвентарный номер:" + std::to_string(GetInventoryNumber()) + "\n"; };
 }
