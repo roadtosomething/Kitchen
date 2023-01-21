@@ -105,6 +105,17 @@ int main() {
 	std::cout << "Объекты успешно добавлены в дерево\n";
 	std::cout << "Просмотр объектов дерево LCP\n";
 	tree->LCP();
+	std::cout << "Просмотр объектов дерево PCL\n";
+	tree->PCL();
+	std::cout << "Просмотр объектов дерево CLP\n";
+	tree->CLP();
 	std::cout << "Вывод инвентарных номеров в виде дерева\n";
+	tree->TreePrint();
+	std::cout << "Для удаления элемента введите инвентарный номер:";
+	int inventorNumDelete;
+	std::cin >> inventorNumDelete;
+	std::cout << std::endl;
+	tree->DeleteNode(inventorNumDelete);
+	std::cout << "Дерево после удаления:\n";
 	tree->TreePrint();
 }

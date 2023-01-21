@@ -44,6 +44,36 @@ void Tree::LCPInner(Node* curNode) {
 	}
 }
 
+void Tree::PCL() {
+	PCLInner(root);
+}
+
+void Tree::PCLInner(Node* curNode) {
+	if (curNode == NULL) {
+		std::cout << "___________________________________________________\n";
+	}
+	else {
+		PCLInner(curNode->right);
+		curNode->kitchenObject->print(true);
+		PCLInner(curNode->left);
+	}
+}
+
+void Tree::CLP() {
+	CLPInner(root);
+}
+
+void Tree::CLPInner(Node* curNode) {
+	if (curNode == NULL) {
+		std::cout << "";
+	}
+	else {
+		curNode->kitchenObject->print(true);
+		CLPInner(curNode->left);
+		CLPInner(curNode->right);
+	}
+}
+
 void Tree::TreePrint() {
 	TreePrintInner(root,1);
 }
@@ -55,4 +85,54 @@ void Tree::TreePrintInner(Node* curnode, int level) {
 		std::cout << curnode->kitchenObject->GetInventoryNumber() << std::endl;
 		TreePrintInner(curnode->right, level + 1);
 	}
+}
+
+Node* Tree::FindNode(int inventorynum) {
+	return FindNodeInner(root,inventorynum);
+}
+
+Node* Tree::FindNodeInner(Node* curnode, int inventorynum) {
+	if (curnode != NULL) {
+		if (curnode->kitchenObject->GetInventoryNumber() == inventorynum) {
+			return curnode;
+		}
+		else {
+			if (inventorynum < curnode->kitchenObject->GetInventoryNumber()) {
+				return FindNodeInner(curnode->left, inventorynum);
+			}
+			else {
+				return FindNodeInner(curnode->right, inventorynum);
+			}
+		}
+	}
+	return NULL;
+}
+
+void Tree::DeleteNode(int inventoryNum) {
+	Node* findNode = FindNode(inventoryNum);
+	if (findNode != NULL) {
+		if (findNode->left == NULL && findNode->right == NULL) {
+			delete findNode->kitchenObject;
+		}
+		if (findNode->left != NULL && findNode == NULL) {
+			delete findNode->kitchenObject;
+			findNode = findNode->left;
+		}
+		if (findNode->left == NULL && findNode != NULL) {
+			delete findNode->kitchenObject;
+			findNode = findNode->right;
+		}
+		if (findNode->left != NULL && findNode->right != NULL) {
+			delete findNode->kitchenObject;
+			findNode = MinRightElement(findNode);
+		}
+	}
+	else {
+		std::cout << "Не найден элемент с данным инвентарным номером!" << std::endl;
+	}
+}
+
+Node* Tree::MinRightElement(Node* curnode) {
+	if (curnode->left != NULL) return curnode->left;
+	if (curnode->left == NULL && curnode->right == NULL) return curnode;
 }
