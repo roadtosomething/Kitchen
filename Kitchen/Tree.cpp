@@ -113,22 +113,29 @@ void Tree::DeleteNode(int inventoryNum) {
 	if (findNode != NULL) {
 		if (findNode->left == NULL && findNode->right == NULL) {
 			delete findNode->kitchenObject;
+			delete findNode;
 		}
 		if (findNode->left != NULL && findNode == NULL) {
 			delete findNode->kitchenObject;
+			Node* target =findNode;
 			findNode = findNode->left;
+			delete target;
 		}
 		if (findNode->left == NULL && findNode != NULL) {
 			delete findNode->kitchenObject;
+			Node* target = findNode;
 			findNode = findNode->right;
+			delete target;
 		}
 		if (findNode->left != NULL && findNode->right != NULL) {
 			delete findNode->kitchenObject;
+			Node* target = findNode;
 			findNode = MinRightElement(findNode);
+			delete target;
 		}
 	}
 	else {
-		std::cout << "Íå íàéäåí ýëåìåíò ñ äàííûì èíâåíòàðíûì íîìåðîì!" << std::endl;
+		std::cout << "ÃÃ¥ Ã­Ã Ã©Ã¤Ã¥Ã­ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã² Ã± Ã¤Ã Ã­Ã­Ã»Ã¬ Ã¨Ã­Ã¢Ã¥Ã­Ã²Ã Ã°Ã­Ã»Ã¬ Ã­Ã®Ã¬Ã¥Ã°Ã®Ã¬!" << std::endl;
 	}
 }
 
