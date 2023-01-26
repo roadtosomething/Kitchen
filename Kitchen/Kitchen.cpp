@@ -8,114 +8,107 @@
 #include "Tree.h"
 #include <list>
 
-
+bool Checker(int N, KitchenObject** kitchenObjects, KitchenObject* kO){
+	for (int j = 0; j < N; j++) {
+					while (kO->GetInventoryNumber() == kitchenObjects[j]->GetInventoryNumber()) {
+						std::cout << "Try Again";
+						return false;
+					}
+				}
+	return true;
+}
 int main() {
 	setlocale(LC_ALL, "Russian");
-	std::cout << "Ñêîëüêî îáúåêòîâ íà âàøåé êóõíå?\n";
+	std::cout << "Ã‘ÃªÃ®Ã«Ã¼ÃªÃ® Ã®Ã¡ÃºÃ¥ÃªÃ²Ã®Ã¢ Ã­Ã  Ã¢Ã Ã¸Ã¥Ã© ÃªÃ³ÃµÃ­Ã¥?\n";
 	int N;
 	std::cin >> N;
 	KitchenObject** kitchenObjects = new KitchenObject * [N];
-	std::cout << "Äàâàéòå îïèøåì ýòè îáúåêòû...\n";
+	std::cout << "Ã„Ã Ã¢Ã Ã©Ã²Ã¥ Ã®Ã¯Ã¨Ã¸Ã¥Ã¬ Ã½Ã²Ã¨ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã»...\n";
 	int answer;
 	for (int i = 0; i < N; i++) {
-		std::cout << "Âûáåðèòå òèï " + std::to_string(i + 1) + "-ãî îáúåêòà:\n";
-		std::cout << "1. Ïëèòà\n";
-		std::cout << "2. Ãàçîâàÿ ïëèòà\n";
-		std::cout << "3. Ýëåêòðè÷åñêàÿ ïëèòà\n";
-		std::cout << "4. Êàñòðþëÿ\n";
-		std::cout << "5. Ìóëüòèâàðêà\n";
+		std::cout << "Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã²Ã¨Ã¯ " + std::to_string(i + 1) + "-Ã£Ã® Ã®Ã¡ÃºÃ¥ÃªÃ²Ã :\n";
+		std::cout << "1. ÃÃ«Ã¨Ã²Ã \n";
+		std::cout << "2. ÃƒÃ Ã§Ã®Ã¢Ã Ã¿ Ã¯Ã«Ã¨Ã²Ã \n";
+		std::cout << "3. ÃÃ«Ã¥ÃªÃ²Ã°Ã¨Ã·Ã¥Ã±ÃªÃ Ã¿ Ã¯Ã«Ã¨Ã²Ã \n";
+		std::cout << "4. ÃŠÃ Ã±Ã²Ã°Ã¾Ã«Ã¿\n";
+		std::cout << "5. ÃŒÃ³Ã«Ã¼Ã²Ã¨Ã¢Ã Ã°ÃªÃ \n";
 		std::cin >> answer;
 		switch (answer)
 		{
 		case 1:
 			kitchenObjects[i] = new Stove();
 			if (i != 0) {
-				for (int j = 0; j < i; j++) {
-					while (kitchenObjects[i]->GetInventoryNumber() == kitchenObjects[j]->GetInventoryNumber()) {
-						std::cout << "Íàéäåí òàêîé æå èíâåíòàðíûé íîìåð, èçìåíèòå åãî!\nÂâåäèòå íîâûé èíâåíòàðíûé íîìåð:";
-						int inventorNum;
-						std::cin >> inventorNum;
-						kitchenObjects[i]->SetInventoryNumber(inventorNum);
-					}
+				while(!Checker(i,kitchenObjects,kitchenObjects[i]))
+				{
+					int inventorNum;
+					std::cin>>inventorNum;
+					kitchenObjects[i]->SetInventoryNumber(inventorNum)
 				}
 			}
 			break;
 		case 2:
 			kitchenObjects[i] = new GasStove();
 			if (i != 0) {
-				for (int j = 0; j < i; j++) {
-					while (kitchenObjects[i]->GetInventoryNumber() == kitchenObjects[j]->GetInventoryNumber()) {
-						std::cout << "Íàéäåí òàêîé æå èíâåíòàðíûé íîìåð, èçìåíèòå åãî!\nÂâåäèòå íîâûé èíâåíòàðíûé íîìåð:";
-						int inventorNum;
-						std::cin >> inventorNum;
-						kitchenObjects[i]->SetInventoryNumber(inventorNum);
-					}
-				}
+				
 			}
 			break;
 		case 3:
 			kitchenObjects[i] = new ElectricStove();
 			if (i != 0) {
-				for (int j = 0; j < i; j++) {
-					while (kitchenObjects[i]->GetInventoryNumber() == kitchenObjects[j]->GetInventoryNumber()) {
-						std::cout << "Íàéäåí òàêîé æå èíâåíòàðíûé íîìåð, èçìåíèòå åãî!\nÂâåäèòå íîâûé èíâåíòàðíûé íîìåð:";
-						int inventorNum;
-						std::cin >> inventorNum;
-						kitchenObjects[i]->SetInventoryNumber(inventorNum);
-					}
+				while(!Checker(i,kitchenObjects,kitchenObjects[i]))
+				{
+					int inventorNum;
+					std::cin>>inventorNum;
+					kitchenObjects[i]->SetInventoryNumber(inventorNum)
 				}
 			}
 			break;
 		case 4:
 			kitchenObjects[i] = new Pan();
 			if (i != 0) {
-				for (int j = 0; j < i; j++) {
-					while (kitchenObjects[i]->GetInventoryNumber() == kitchenObjects[j]->GetInventoryNumber()) {
-						std::cout << "Íàéäåí òàêîé æå èíâåíòàðíûé íîìåð, èçìåíèòå åãî!\nÂâåäèòå íîâûé èíâåíòàðíûé íîìåð:";
-						int inventorNum;
-						std::cin >> inventorNum;
-						kitchenObjects[i]->SetInventoryNumber(inventorNum);
-					}
+				while(!Checker(i,kitchenObjects,kitchenObjects[i]))
+				{
+					int inventorNum;
+					std::cin>>inventorNum;
+					kitchenObjects[i]->SetInventoryNumber(inventorNum)
 				}
 			}
 			break;
 		case 5:
 			kitchenObjects[i] = new Multicooker();
 			if (i != 0) {
-				for (int j = 0; j < i; j++) {
-					while (kitchenObjects[i]->GetInventoryNumber() == kitchenObjects[j]->GetInventoryNumber()) {
-						std::cout << "Íàéäåí òàêîé æå èíâåíòàðíûé íîìåð, èçìåíèòå åãî!\nÂâåäèòå íîâûé èíâåíòàðíûé íîìåð:";
-						int inventorNum;
-						std::cin >> inventorNum;
-						kitchenObjects[i]->SetInventoryNumber(inventorNum);
-					}
+				while(!Checker(i,kitchenObjects,kitchenObjects[i]))
+				{
+					int inventorNum;
+					std::cin>>inventorNum;
+					kitchenObjects[i]->SetInventoryNumber(inventorNum)
 				}
 			}
 			break;
 		default:
-			std::cout<< "Âûáåðèòå ïóíêò ìåíþ îò 1 äî 5!\n";
+			std::cout<< "Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã¯Ã³Ã­ÃªÃ² Ã¬Ã¥Ã­Ã¾ Ã®Ã² 1 Ã¤Ã® 5!\n";
 			continue;
 		}
 	}
-	std::cout << "Ïîìåùàåì îáúåêòû â äåðåâî...\n";
+	std::cout << "ÃÃ®Ã¬Ã¥Ã¹Ã Ã¥Ã¬ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã» Ã¢ Ã¤Ã¥Ã°Ã¥Ã¢Ã®...\n";
 	Tree* tree = new Tree();
 	for (int i = 0; i < N; i++) {
 		tree->Add(kitchenObjects[i]);
 	}
-	std::cout << "Îáúåêòû óñïåøíî äîáàâëåíû â äåðåâî\n";
-	std::cout << "Ïðîñìîòð îáúåêòîâ äåðåâî LCP\n";
+	std::cout << "ÃŽÃ¡ÃºÃ¥ÃªÃ²Ã» Ã³Ã±Ã¯Ã¥Ã¸Ã­Ã® Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã» Ã¢ Ã¤Ã¥Ã°Ã¥Ã¢Ã®\n";
+	std::cout << "ÃÃ°Ã®Ã±Ã¬Ã®Ã²Ã° Ã®Ã¡ÃºÃ¥ÃªÃ²Ã®Ã¢ Ã¤Ã¥Ã°Ã¥Ã¢Ã® LCP\n";
 	tree->LCP();
-	std::cout << "Ïðîñìîòð îáúåêòîâ äåðåâî PCL\n";
+	std::cout << "ÃÃ°Ã®Ã±Ã¬Ã®Ã²Ã° Ã®Ã¡ÃºÃ¥ÃªÃ²Ã®Ã¢ Ã¤Ã¥Ã°Ã¥Ã¢Ã® PCL\n";
 	tree->PCL();
-	std::cout << "Ïðîñìîòð îáúåêòîâ äåðåâî CLP\n";
+	std::cout << "ÃÃ°Ã®Ã±Ã¬Ã®Ã²Ã° Ã®Ã¡ÃºÃ¥ÃªÃ²Ã®Ã¢ Ã¤Ã¥Ã°Ã¥Ã¢Ã® CLP\n";
 	tree->CLP();
-	std::cout << "Âûâîä èíâåíòàðíûõ íîìåðîâ â âèäå äåðåâà\n";
+	std::cout << "Ã‚Ã»Ã¢Ã®Ã¤ Ã¨Ã­Ã¢Ã¥Ã­Ã²Ã Ã°Ã­Ã»Ãµ Ã­Ã®Ã¬Ã¥Ã°Ã®Ã¢ Ã¢ Ã¢Ã¨Ã¤Ã¥ Ã¤Ã¥Ã°Ã¥Ã¢Ã \n";
 	tree->TreePrint();
-	std::cout << "Äëÿ óäàëåíèÿ ýëåìåíòà ââåäèòå èíâåíòàðíûé íîìåð:";
+	std::cout << "Ã„Ã«Ã¿ Ã³Ã¤Ã Ã«Ã¥Ã­Ã¨Ã¿ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã  Ã¢Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã­Ã¢Ã¥Ã­Ã²Ã Ã°Ã­Ã»Ã© Ã­Ã®Ã¬Ã¥Ã°:";
 	int inventorNumDelete;
 	std::cin >> inventorNumDelete;
 	std::cout << std::endl;
 	tree->DeleteNode(inventorNumDelete);
-	std::cout << "Äåðåâî ïîñëå óäàëåíèÿ:\n";
+	std::cout << "Ã„Ã¥Ã°Ã¥Ã¢Ã® Ã¯Ã®Ã±Ã«Ã¥ Ã³Ã¤Ã Ã«Ã¥Ã­Ã¨Ã¿:\n";
 	tree->TreePrint();
 }
